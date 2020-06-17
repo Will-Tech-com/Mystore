@@ -38,20 +38,20 @@ public class CustomerEntersStore {
             Scanner input = new Scanner(System.in);
             String action = "";
             System.out.println("Enter 'cart' to access cart information: "
-                    +"\nEnter 'cud' Customer Options: "
-                    +"\nEnter 'pud' Product Options: "
-                    +"\nEnter 'quit' to leave store(COMMENT BOX OPTIONAL: ");
+                    +"\nEnter 'customer' Customer Options: "
+                    +"\nEnter 'product' Product Options: "
+                    +"\nEnter 'quit' to leave store(COMMENT BOX OPTIONALqui: ");
 
             while (!action.equals("quit")) {
                 action = input.next();
                 switch (action) {
-                    case "facalty":
+                    case "cart":
                         PosCart.cart();
                         break;
-                    case "cud":
+                    case "customer":
                         CustomerOptions.runCustomer();
                         break;
-                    case "pud":
+                    case "product":
                         ProductsOptions.runProduct();
                         break;
                     case "quit":

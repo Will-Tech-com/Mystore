@@ -39,13 +39,17 @@ public static void productOptions(){
         switch (action){
             case "display":
                 displayProducts();
+                break;
             case "input":
                 readInProductDetails(input);
+                break;
             case "quit":
                 System.out.println("Exiting Product options");
+                break;
             default:
                 System.out.println("Action does not Exist... " +
                         "\nPlease try again...");
+                break;
         }
     }
 }
@@ -125,7 +129,6 @@ public static void productOptions(){
         public int getProd_id() {
             return prod_id;
         }
-
         public void setProd_id(int prod_id) {
             this.prod_id = prod_id;
         }

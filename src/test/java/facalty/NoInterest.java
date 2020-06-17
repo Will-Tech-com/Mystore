@@ -22,10 +22,14 @@ public class NoInterest {
             switch (action) {
                 case "comment":
                     comments();
+                    System.out.println("Enter 'quit' again to leave");
                     break;
                 case "quit":
                     System.out.println("Thank you for coming to our store...");
-
+                    break;
+                default:
+                    System.out.println("Invalid Entry...Please try again");
+                    break;
             }
         }
     }
