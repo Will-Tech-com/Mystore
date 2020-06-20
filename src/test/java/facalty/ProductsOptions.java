@@ -25,7 +25,6 @@ public class ProductsOptions {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-
         }
     }
 public static void productOptions(){

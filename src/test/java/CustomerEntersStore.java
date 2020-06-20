@@ -1,6 +1,6 @@
 import facalty.CustomerOptions;
 import facalty.NoInterest;
-import facalty.PosCart;
+import cart.PosCart;
 import facalty.ProductsOptions;
 
 import java.sql.*;
@@ -40,13 +40,13 @@ public class CustomerEntersStore {
             System.out.println("Enter 'cart' to access cart information: "
                     +"\nEnter 'customer' Customer Options: "
                     +"\nEnter 'product' Product Options: "
-                    +"\nEnter 'quit' to leave store(COMMENT BOX OPTIONALqui: ");
+                    +"\nEnter 'quit' to leave store(COMMENT BOX OPTIONAL): ");
 
             while (!action.equals("quit")) {
                 action = input.next();
                 switch (action) {
                     case "cart":
-                        PosCart.cart();
+                        PosCart.cartOptions();
                         break;
                     case "customer":
                         CustomerOptions.runCustomer();
@@ -63,15 +63,6 @@ public class CustomerEntersStore {
                 }
             }
         }
-
-
-
-
-
-
-
-
-
 }
 
 
