@@ -6,14 +6,14 @@ public class Transaction {
 
     public static void transactionOptions(){
         Scanner input = new Scanner(System.in);
-        System.out.print("\nEnter 'createTrans' to Create Transaction: " +
+        System.out.print("\nEnter 'ctrans' to Create Transaction: " +
                 "\nEnter 'newC' to create new Customer Profile: " +
                 "\nEnter 'cancel' to cancel Transaction: ");
         String action = "";
         while (!action.equals("quit")){
             action = input.next();
             switch (action){
-                case "createTrans":
+                case "ctrans":
                    CreateTransaction.runCustomer();
                     break;
                 case "newC":

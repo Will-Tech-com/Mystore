@@ -11,13 +11,10 @@ public class AddToCart {
     static String password = "will12boskowski1999";
     static Scanner inputD = new Scanner(System.in);
     static int prod_id;
+    public static int prod_price ;
 
     public static void runAddCart(){
         try {
-            String url = "jdbc:mysql://localhost/shop";
-            String username = "root";
-            String password = "will12boskowski1999";
-
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(url, username, password);
             addToCart();
@@ -25,17 +22,14 @@ public class AddToCart {
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-
         }
-
     }
-    public static void addToCart(){
+    public static void addToCart() throws Exception{
 
         Connection con;
         PreparedStatement ps;
         ResultSet rs;
 
-        try {
             menu();
             con = DriverManager.getConnection(url, username, password);
             inputToCart(inputD);
@@ -54,12 +48,10 @@ public class AddToCart {
                 System.out.println("Product Name: " + prod_name);
                 System.out.println("Product Price: R" + prod_price);
                 System.out.println("Number of Stock: " + num_stock);
-
+                
             }
 
-        } catch (SQLException e3) {
-            System.err.println(e3.getMessage());
-        }
+
     }
     public static void menu() {
         try {
