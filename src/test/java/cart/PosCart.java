@@ -1,7 +1,5 @@
 package cart;
 
-import transaction.Transaction;
-
 import java.util.Scanner;
 
 public class PosCart {
@@ -17,7 +15,6 @@ public class PosCart {
             action = input.next();
             switch (action) {
                 case "add":
-                    AddToCart.runAddCart();
                     transaction.Transaction.transactionOptions();
                     break;
                 case "remove":
@@ -35,5 +32,6 @@ public class PosCart {
             }
         }
     }
+
 }
 

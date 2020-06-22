@@ -44,6 +44,10 @@ public static void productOptions(){
                 break;
             case "quit":
                 System.out.println("Exiting Product options");
+                System.out.println("Enter 'cart' to access cart information: "
+                        +"\nEnter 'customer' Customer Options: "
+                        +"\nEnter 'product' Product Options: "
+                        +"\nEnter 'quit' to leave store(COMMENT BOX OPTIONAL): ");
                 break;
             default:
                 System.out.println("Action does not Exist... " +
