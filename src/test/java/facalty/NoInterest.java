@@ -7,10 +7,6 @@ import java.util.Scanner;
 
 public class NoInterest {
 
-    public static void main(String[] args) {
-
-    }
-
     public static void runComments() {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter 'comment' to give feedback on shop experience: " +

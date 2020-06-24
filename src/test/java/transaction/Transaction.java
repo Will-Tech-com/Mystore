@@ -1,6 +1,6 @@
 package transaction;
 
-import cart.AddToCart;
+import cart.AddToBasket;
 
 import java.util.Scanner;
 
@@ -16,7 +16,8 @@ public class Transaction {
             action = input.next();
             switch (action){
                 case "trans":
-                    AddToCart.runAddCart();
+                    AddToBasket.runAddCart();
+                    Payment.runPayment();
                     break;
                 case "newC":
                     facalty.CustomerOptions.runCustomer();

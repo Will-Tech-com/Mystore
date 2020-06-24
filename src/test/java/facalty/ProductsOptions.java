@@ -8,10 +8,6 @@ public class ProductsOptions {
 
     static Connection con;
 
-    public static void main(String[] args) {
-
-    }
-
     public static void runProduct() {
         try {
             String url = "jdbc:mysql://localhost/shop";

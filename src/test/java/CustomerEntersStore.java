@@ -15,7 +15,6 @@ public class CustomerEntersStore {
             CustomerEntersStore pos = new CustomerEntersStore();
             pos.startUpPos();
         }
-
         void startUpPos() {
             try {
                 String url = "jdbc:mysql://localhost/shop";
