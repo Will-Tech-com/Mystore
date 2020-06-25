@@ -19,12 +19,16 @@ public class PosCart {
         String action = "";
         System.out.print("Enter 'add' to add item to Cart: " +
                 "\nEnter 'remove' to remove items from Cart: " +
-                "\nEnter 'view' to display Cart items: ");
+                "\nEnter 'view' to display Cart items: " +
+                "\nEnter 'pay' to pay for items: ");
 
         while (!action.equals("quit")) {
             action = input.next();
             switch (action) {
                 case "add":
+                    AddToBasket.runAddCart();
+                    break;
+                case "pay":
                     transaction.Transaction.transactionOptions();
                     break;
                 case "remove":

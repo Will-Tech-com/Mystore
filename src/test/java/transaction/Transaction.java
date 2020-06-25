@@ -10,18 +10,18 @@ public class Transaction {
         Scanner input = new Scanner(System.in);
         System.out.print("\nEnter 'trans' to Create Transaction: " +
                 "\nEnter 'newC' to create new Customer Profile: " +
-                "\nEnter 'cancel' to cancel Transaction: ");
+                "\nEnter 'quit' to cancel Transaction: ");
         String action = "";
         while (!action.equals("quit")){
             action = input.next();
             switch (action){
                 case "trans":
-                    AddToBasket.runAddCart();
                     Payment.runPayment();
                     break;
                 case "newC":
                     facalty.CustomerOptions.runCustomer();
-                case "cancel":
+                    break;
+                case "quit":
                     System.out.println("Canceling Transaction...");
                     break;
                 default:

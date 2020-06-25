@@ -29,7 +29,7 @@ public class Payment {
 
         try{
         con = DriverManager.getConnection(url, username, password);
-        readInTransact(inputD);
+        readInForPayment(inputD);
 
         ps1 = con.prepareStatement("select * from customer where Customer_Id=?");
         ps1.setInt(1, cust_id);
@@ -62,7 +62,8 @@ public class Payment {
                 PreparedStatement state = con.prepareStatement(sqls);
 
                 state.setInt(1, cust_id);
-                state.setInt(2, prod_price1);
+                state.setInt(2,
+                        prod_price1 + prod_price1 +prod_price1);
                 state.setInt(3, cust_balance - prod_price1);
 
                 int ci = state.executeUpdate();
@@ -75,7 +76,7 @@ public class Payment {
             System.out.println(e1.getMessage());
         }
     }
-    public static void readInTransact(Scanner inputD) {
+    public static void readInForPayment(Scanner inputD) {
         System.out.print("Enter Customer ID: ");
         cust_id = inputD.nextInt();
     }

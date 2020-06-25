@@ -19,7 +19,10 @@ public class RemoveFromBasket {
             PreparedStatement ps;
 
             con = DriverManager.getConnection(url, username, password);
-            inputToCart(inputD);//put in for loop
+
+            for (int i = 0; i < 3; i++){
+               removeFromBasket(inputD);
+        }
 
             ps = con.prepareStatement("DELETE from shopping_basket where Product_Id=?");
             ps.setInt(1, prod_id);
@@ -30,7 +33,7 @@ public class RemoveFromBasket {
             System.err.println(ex.getMessage());
         }
     }
-    public static void inputToCart(Scanner inputD) {
+    public static void removeFromBasket(Scanner inputD) {
         System.out.print("Enter Product Id: ");
         prod_id = inputD.nextInt();
     }

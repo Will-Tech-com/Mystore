@@ -22,39 +22,43 @@ public class AddToBasket {
             System.out.println(e.getMessage());
         }
     }
-    public static void addToBasket() throws Exception{
+    public static void addToBasket() throws Exception {
 
         PreparedStatement ps;
         ResultSet rs;
 
         menu();
         con = DriverManager.getConnection(url, username, password);
-        inputToCart(inputD);//put in for loop
+        int i;
+        for (i = 0; i < 3; i++) {
+            inputToShoppingBasket(inputD);
 
-        ps = con.prepareStatement("select * from product where Product_Id=?");
-        ps.setInt(1, prod_id);
+            ps = con.prepareStatement("select * from product where Product_Id=?");
+            ps.setInt(1, prod_id);
 
-        rs = ps.executeQuery();
+            rs = ps.executeQuery();
 
-        while (rs.next()) {
-            int prod_id = rs.getInt("Product_Id");
-            String prod_name = rs.getString("Product_Name");
-            double prod_price = rs.getDouble("Product_Price");
+            while (rs.next()) {
+                int prod_id = rs.getInt("Product_Id");
+                String prod_name = rs.getString("Product_Name");
+                double prod_price = rs.getDouble("Product_Price");
 
-            String sql1 = "INSERT INTO shopping_basket"
-                    + "(Product_Id, Product_Name, Product_Price)"
-                    + "VALUES (?, ?, ?)";
+                String sql1 = "INSERT INTO shopping_basket"
+                        + "(Product_Id, Product_Name, Product_Price)"
+                        + "VALUES (?, ?, ?)";
 
-            PreparedStatement states = con.prepareStatement(sql1);
+                PreparedStatement states = con.prepareStatement(sql1);
 
-            states.setInt(1, prod_id);
-            states.setString(2, prod_name);
-            states.setDouble(3, prod_price);
+                states.setInt(1, prod_id);
+                states.setString(2, prod_name);
+                states.setDouble(3, prod_price);
 
-            int p = states.executeUpdate();
-            if (p > 0) {
-                System.out.println("Item added to basket..." +
-                        "\nEnter 'add' to add another item");
+                int p = states.executeUpdate();
+                if (p > 0) {
+                    System.out.println("Item added to basket..." +
+                            "\nEnter 'add' to add another item: " +
+                            "\nEnter 'pay' to make payment: ");
+                }
             }
         }
     }
@@ -80,8 +84,9 @@ public class AddToBasket {
         }
     }
 
-    public static void inputToCart(Scanner inputD) {
+    public static void inputToShoppingBasket(Scanner inputD) {
         System.out.print("Product Id: ");
         prod_id = inputD.nextInt();
     }
 }
+
