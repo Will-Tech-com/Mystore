@@ -1,6 +1,5 @@
 package transaction;
 
-import cart.AddToBasket;
 
 import java.util.Scanner;
 
@@ -17,9 +16,11 @@ public class Transaction {
             switch (action){
                 case "trans":
                     Payment.runPayment();
+                    transOptions();
                     break;
                 case "newC":
                     facalty.CustomerOptions.runCustomer();
+                    transOptions();
                     break;
                 case "quit":
                     System.out.println("Canceling Transaction...");
@@ -30,5 +31,10 @@ public class Transaction {
                     break;
             }
         }
+    }
+    public static void transOptions(){
+        System.out.print("\nEnter 'trans' to Create Transaction: " +
+                "\nEnter 'newC' to create new Customer Profile: " +
+                "\nEnter 'quit' to cancel Transaction: ");
     }
 }

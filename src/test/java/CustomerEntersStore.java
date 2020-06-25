@@ -19,7 +19,7 @@ public class CustomerEntersStore {
             try {
                 String url = "jdbc:mysql://localhost/shop";
                 String userName = "root";
-                String password = "will12boskowski1999";
+                String password = "";
 
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 con = DriverManager.getConnection(url, userName, password);
@@ -46,12 +46,15 @@ public class CustomerEntersStore {
                 switch (action) {
                     case "cart":
                         PosCart.cartOptions();
+                        afterOpt();
                         break;
                     case "customer":
                         CustomerOptions.runCustomer();
+                        afterOpt();
                         break;
                     case "product":
                         ProductsOptions.runProduct();
+                        afterOpt();
                         break;
                     case "quit":
                         NoInterest.runComments();
@@ -61,6 +64,12 @@ public class CustomerEntersStore {
                         break;
                 }
             }
+        }
+        public static void afterOpt(){
+            System.out.println("\nEnter 'cart' to access cart information: "
+                    +"\nEnter 'customer' Customer Options: "
+                    +"\nEnter 'product' Product Options: "
+                    +"\nEnter 'quit' to leave store(COMMENT BOX OPTIONAL): ");
         }
 }
 

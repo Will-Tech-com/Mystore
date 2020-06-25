@@ -7,7 +7,7 @@ public class Payment {
     static Connection con;
     static String url = "jdbc:mysql://localhost/shop";
     static String username = "root";
-    static String password = "will12boskowski1999";
+    static String password = "";
     static Scanner inputD = new Scanner(System.in);
 
     static int cust_id;
@@ -51,24 +51,31 @@ public class Payment {
             Statement state2 = con.createStatement();
             ResultSet p12 = state2.executeQuery(sql2);
 
+            PreparedStatement ps;
+            ResultSet rs;
+
             while (p12.next()) {
-                int prod_price1 = p12.getInt("Product_Price");
+                ps = con.prepareStatement("select * from product");
+                rs = ps.executeQuery();
+
+                while (rs.next()) {
+                        double prod_price = rs.getDouble("Product_Price");
+
+                        String sqls = "INSERT INTO payment"
+                                + "(Customer_ID, Total_Price, Customer_Balance)"
+                                + "VALUES (?, ?, ?)";
+
+                        PreparedStatement state = con.prepareStatement(sqls);
+
+                        state.setInt(1, cust_id);
+                        state.setDouble(2, prod_price);
+                        state.setDouble(3, cust_balance - prod_price);
 
 
-                String sqls = "INSERT INTO payment"
-                        + "(Customer_ID, Total_Price, Customer_Balance)"
-                        + "VALUES (?, ?, ?)";
-
-                PreparedStatement state = con.prepareStatement(sqls);
-
-                state.setInt(1, cust_id);
-                state.setInt(2,
-                        prod_price1 + prod_price1 +prod_price1);
-                state.setInt(3, cust_balance - prod_price1);
-
-                int ci = state.executeUpdate();
-                if (ci > 0) {
-                    System.out.println("Payment Update Successful");
+                        int ci = state.executeUpdate();
+                        if (ci > 0) {
+                            System.out.println("Payment Update Successful");
+                        }
                 }
             }
         }

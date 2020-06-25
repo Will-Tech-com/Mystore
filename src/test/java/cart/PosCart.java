@@ -12,7 +12,7 @@ public class PosCart {
     static Connection con = null;
     static String url = "jdbc:mysql://localhost/shop";
     static String username = "root";
-    static String password = "will12boskowski1999";
+    static String password = "";
 
     public static void cartOptions() {
         Scanner input = new Scanner(System.in);
@@ -27,19 +27,24 @@ public class PosCart {
             switch (action) {
                 case "add":
                     AddToBasket.runAddCart();
+                  afterOption();
                     break;
                 case "pay":
                     transaction.Transaction.transactionOptions();
+                    afterOption();
                     break;
                 case "remove":
                     basketItemsDisplay();
                     RemoveFromBasket.removeItems();
+                    afterOption();
                     break;
                 case "view":
                     basketItemsDisplay();
+                    afterOption();
                     break;
                 case "quit":
-                    System.out.println("Exiting Cart");
+                    System.out.println("\nExiting Cart\n");
+                   afterOption();
                     break;
                 default:
                     System.out.println("Invalid Command, please try again");
@@ -69,6 +74,14 @@ public class PosCart {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static void afterOption(){
+        System.out.print( "\nEnter 'pay' to make payment: " +
+                        "\nEnter 'add' to add items to cart: "+
+                        "\nEnter 'quit' to go back to Main Menu: " +
+                        "\nEnter 'view' to view whats in Basket: " +
+                        "\nEnter 'remove' to remove items from Cart: ");
     }
 }
 

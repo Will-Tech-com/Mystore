@@ -8,7 +8,7 @@ public class AddToBasket {
     static Connection con = null;
     static String url = "jdbc:mysql://localhost/shop";
     static String username = "root";
-    static String password = "will12boskowski1999";
+    static String password = "";
     static Scanner inputD = new Scanner(System.in);
     static int prod_id;
 
@@ -29,8 +29,8 @@ public class AddToBasket {
 
         menu();
         con = DriverManager.getConnection(url, username, password);
-        int i;
-        for (i = 0; i < 3; i++) {
+
+        for (int i = 0; i < 3; i++) {
             inputToShoppingBasket(inputD);
 
             ps = con.prepareStatement("select * from product where Product_Id=?");
@@ -55,9 +55,8 @@ public class AddToBasket {
 
                 int p = states.executeUpdate();
                 if (p > 0) {
-                    System.out.println("Item added to basket..." +
-                            "\nEnter 'add' to add another item: " +
-                            "\nEnter 'pay' to make payment: ");
+                    System.out.println("Item added to basket...");
+
                 }
             }
         }

@@ -10,7 +10,7 @@ public class CustomerOptions {
         try {
             String url = "jdbc:mysql://localhost/shop";
             String username = "root";
-            String password =  "will12boskowski1999";
+            String password =  "";
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(url, username, password);

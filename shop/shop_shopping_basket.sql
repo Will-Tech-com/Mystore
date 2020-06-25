@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping data for table `payment`
+-- Dumping data for table `shopping_basket`
 --
 
-LOCK TABLES `payment` WRITE;
-/*!40000 ALTER TABLE `payment` DISABLE KEYS */;
-INSERT INTO `payment` VALUES (1,50,950);
-/*!40000 ALTER TABLE `payment` ENABLE KEYS */;
+LOCK TABLES `shopping_basket` WRITE;
+/*!40000 ALTER TABLE `shopping_basket` DISABLE KEYS */;
+INSERT INTO `shopping_basket` VALUES (1,'Mixed Veg','50.0'),(2,'Toaster','120.0'),(3,'Milk','9.0');
+/*!40000 ALTER TABLE `shopping_basket` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

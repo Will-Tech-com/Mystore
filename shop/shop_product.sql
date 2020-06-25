@@ -21,7 +21,7 @@
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Mixed Veg',50,12,'Veiggies'),(2,'Toaster',120,9,'Electronics'),(3,'Milk',9,20,'Dairy'),(4,'Yogurt',24,24,'Dairy'),(5,'Patatoes',50,30,'Veggies'),(6,'Kettle',110,14,'Electronics'),(7,'Pens',25,50,'Stationary'),(8,'Books',15,57,'Stationary'),(9,'Bog Food',250,13,'Pet food'),(10,'Cat food',185,13,'Pet food'),(11,'WeetBix',50,25,'Breakfast'),(12,'Milk',10,29,'Dairy'),(13,'Carrots',13,50,'Veggies'),(14,'Bananas',5,64,'Fruit'),(15,'Apples',4,30,'Fruit');
+INSERT INTO `product` VALUES (1,'Mixed Veg',50,12,'Veiggies'),(2,'Toaster',120,9,'Electronics'),(3,'Milk',9,20,'Dairy'),(4,'Yogurt',24,24,'Dairy'),(5,'Patatoes',50,30,'Veggies'),(6,'Kettle',110,14,'Electronics'),(7,'Pens',25,50,'Stationary'),(8,'Books',15,57,'Stationary'),(9,'Bog Food',250,13,'Pet food'),(10,'Cat food',185,13,'Pet food'),(11,'WeetBix',50,25,'Breakfast'),(12,'Milk',10,29,'Dairy'),(13,'Carrots',13,50,'Veggies'),(14,'Bananas',5,64,'Fruit'),(15,'Apples',4,30,'Fruit'),(16,'FishOil',45,13,'Food');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -34,4 +34,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-20 21:47:02
+-- Dump completed on 2020-06-25 11:17:08
