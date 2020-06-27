@@ -1,13 +1,17 @@
 package transaction;
 
+import cart.RemoveFromBasket;
+
 import java.sql.*;
 import java.util.Scanner;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 
 public class Payment {
     static Connection con;
     static String url = "jdbc:mysql://localhost/shop";
     static String username = "root";
-    static String password = "";
+    static String password = "will12boskowski1999";
     static Scanner inputD = new Scanner(System.in);
 
     static int cust_id;
@@ -47,38 +51,41 @@ public class Payment {
             System.out.println("Customer Balance: " + cust_balance);
 
             //part of total price calculation
-            String sql2 = "select * from shopping_basket";
-            Statement state2 = con.createStatement();
-            ResultSet p12 = state2.executeQuery(sql2);
+                Statement stat1 = con.createStatement();
+                ResultSet rs;
+                String sql1 = "SELECT `Product_Price` FROM shopping_basket";
 
-            PreparedStatement ps;
-            ResultSet rs;
+                rs = stat1.executeQuery(sql1);
 
-            while (p12.next()) {
-                ps = con.prepareStatement("select * from product");
-                rs = ps.executeQuery();
+                double total_price = 0.0;
+                while(rs.next()){
 
-                while (rs.next()) {
-                        double prod_price = rs.getDouble("Product_Price");
+                total_price += rs.getDouble("Product_Price");
+                }
+            System.out.println("Total Price :R" + total_price);
 
-                        String sqls = "INSERT INTO payment"
-                                + "(Customer_ID, Total_Price, Customer_Balance)"
-                                + "VALUES (?, ?, ?)";
+                String sqls = "INSERT INTO payment"
+                        + "(Customer_ID, Total_Price, Customer_Balance)"
+                        + "VALUES (?, ?, ?)";
 
-                        PreparedStatement state = con.prepareStatement(sqls);
+                PreparedStatement state = con.prepareStatement(sqls);
 
-                        state.setInt(1, cust_id);
-                        state.setDouble(2, prod_price);
-                        state.setDouble(3, cust_balance - prod_price);
+                if (cust_balance > total_price) {
+                    state.setInt(1, cust_id);
+                    state.setDouble(2, total_price);
+                    state.setDouble(3, cust_balance - total_price);
 
 
-                        int ci = state.executeUpdate();
-                        if (ci > 0) {
-                            System.out.println("Payment Update Successful");
-                        }
+                    int ci = state.executeUpdate();
+                    if (ci > 0) {
+                        System.out.println("Payment Update Successful");
+                    }
+                }else if (cust_balance < total_price){
+                    System.out.println("You do not have enough to pay for these items." +
+                            "\nPlease remove a few items or item to have enough for payment.");
+                    RemoveFromBasket.removeItems();
                 }
             }
-        }
         }catch (Exception e1){
             System.out.println(e1.getMessage());
         }

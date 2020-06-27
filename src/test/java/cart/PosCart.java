@@ -12,12 +12,12 @@ public class PosCart {
     static Connection con = null;
     static String url = "jdbc:mysql://localhost/shop";
     static String username = "root";
-    static String password = "";
+    static String password = "will12boskowski1999";
 
     public static void cartOptions() {
         Scanner input = new Scanner(System.in);
         String action = "";
-        System.out.print("Enter 'add' to add item to Cart: " +
+        System.out.print("\nEnter 'add' to add item to Cart: " +
                 "\nEnter 'remove' to remove items from Cart: " +
                 "\nEnter 'view' to display Cart items: " +
                 "\nEnter 'pay' to pay for items: ");
@@ -81,7 +81,7 @@ public class PosCart {
                         "\nEnter 'add' to add items to cart: "+
                         "\nEnter 'quit' to go back to Main Menu: " +
                         "\nEnter 'view' to view whats in Basket: " +
-                        "\nEnter 'remove' to remove items from Cart: ");
+                        "\nEnter 'remove' to remove items from Cart: \n");
     }
 }
 

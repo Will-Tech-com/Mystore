@@ -8,7 +8,7 @@ public class AddToBasket {
     static Connection con = null;
     static String url = "jdbc:mysql://localhost/shop";
     static String username = "root";
-    static String password = "";
+    static String password = "will12boskowski1999";
     static Scanner inputD = new Scanner(System.in);
     static int prod_id;
 
@@ -42,6 +42,7 @@ public class AddToBasket {
                 int prod_id = rs.getInt("Product_Id");
                 String prod_name = rs.getString("Product_Name");
                 double prod_price = rs.getDouble("Product_Price");
+                //int num_stock = rs.getInt("Quantity_of_Stock");
 
                 String sql1 = "INSERT INTO shopping_basket"
                         + "(Product_Id, Product_Name, Product_Price)"
@@ -56,7 +57,6 @@ public class AddToBasket {
                 int p = states.executeUpdate();
                 if (p > 0) {
                     System.out.println("Item added to basket...");
-
                 }
             }
         }
