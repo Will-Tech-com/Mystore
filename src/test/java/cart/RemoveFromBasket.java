@@ -15,12 +15,15 @@ public class RemoveFromBasket {
 
     public static void removeItems() {
         System.out.println("\nChoose Item to remove");
+        PosCart.basketItemsDisplay();
+
         try {
             PreparedStatement ps;
 
             con = DriverManager.getConnection(url, username, password);
 
-            for (int i = 0; i < 3; i++) {
+
+            for (int x = 0; x < 1; x++) {
                 removeFromBasket(inputD);
 
                 ps = con.prepareStatement("DELETE from shopping_basket where Product_Id=?");
@@ -36,6 +39,7 @@ public class RemoveFromBasket {
                 System.err.println(ex.getMessage());
             }
         }
+
     public static void removeFromBasket(Scanner inputD) {
         System.out.print("Enter Product Id: ");
         prod_id = inputD.nextInt();
