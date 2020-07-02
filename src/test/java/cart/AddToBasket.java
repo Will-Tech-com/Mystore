@@ -42,7 +42,7 @@ public class AddToBasket {
                 int prod_id = rs.getInt("Product_Id");
                 String prod_name = rs.getString("Product_Name");
                 double prod_price = rs.getDouble("Product_Price");
-                //int num_stock = rs.getInt("Quantity_of_Stock");
+                int num_stock = rs.getInt("Quantity_of_Stock");
 
                 String sql1 = "INSERT INTO shopping_basket"
                         + "(Product_Id, Product_Name, Product_Price)"
@@ -58,7 +58,15 @@ public class AddToBasket {
                 if (p > 0) {
                     System.out.println("Item added to basket...");
                 }
+                    String sql = "update product set Quantity_of_Stock = ? where Product_Id = ?";
+                    PreparedStatement state = con.prepareStatement(sql);
+
+                    state.setInt(1, num_stock - 1);
+                    state.setInt(2, prod_id);
+
+                    state.executeUpdate();
             }
+
         }
     }
     public static void menu() {

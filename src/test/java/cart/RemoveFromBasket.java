@@ -32,7 +32,24 @@ public class RemoveFromBasket {
                 int x1 = ps.executeUpdate();
                 if (x1 > 0) {
                     System.out.println("Items/ Item has been Removed...");
+                }
 
+                ps = con.prepareStatement("select * from product where Product_Id=?");
+                ps.setInt(1, prod_id);
+
+                ResultSet rs = ps.executeQuery();
+
+                while (rs.next()) {
+                    int prod_id = rs.getInt("Product_Id");
+                    int num_stock = rs.getInt("Quantity_of_Stock");
+
+                    String sql = "update product set Quantity_of_Stock = ? where Product_Id = ?";
+                    PreparedStatement state = con.prepareStatement(sql);
+
+                    state.setInt(1, num_stock + 1);
+                    state.setInt(2, prod_id);
+
+                    state.executeUpdate();
                 }
             }
             } catch(Exception ex){

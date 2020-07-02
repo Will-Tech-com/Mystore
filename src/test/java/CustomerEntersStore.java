@@ -3,35 +3,15 @@ import facalty.NoInterest;
 import cart.PosCart;
 import facalty.ProductsOptions;
 
-import java.sql.*;
 import java.util.Scanner;
 
 
 public class CustomerEntersStore {
 
-   Connection con = null;
 
         public static void main(String[] args) {
             CustomerEntersStore pos = new CustomerEntersStore();
-            pos.startUpPos();
-        }
-        void startUpPos() {
-            try {
-                String url = "jdbc:mysql://localhost/shop";
-                String userName = "root";
-                String password = "will12boskowski1999";
-
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                con = DriverManager.getConnection(url, userName, password);
-                this.runPos();
-                con.close();
-
-            } catch (ClassNotFoundException | SQLException ex) {
-
-                System.err.println(ex.getMessage());
-                System.exit(0);
-            }
-
+            pos.runPos();
         }
         public void runPos() {
             Scanner input = new Scanner(System.in);

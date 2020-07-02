@@ -22,7 +22,7 @@ public class PosCart {
                 "\nEnter 'view' to display Cart items: " +
                 "\nEnter 'pay' to pay for items: ");
 
-        while (!action.equals("quit")) {
+        while (!action.equals("back")) {
             action = input.next();
             switch (action) {
                 case "add":
@@ -42,12 +42,12 @@ public class PosCart {
                     basketItemsDisplay();
                     afterOption();
                     break;
-                case "quit":
+                case "back":
                     System.out.println("\nExiting Cart\n");
                    afterOption();
                     break;
                 default:
-                    System.out.println("Invalid Command, please try again");
+                    System.out.println("Invalid Command, please try again...");
                     break;
             }
         }
@@ -79,9 +79,9 @@ public class PosCart {
     public static void afterOption(){
         System.out.print( "\nEnter 'pay' to make payment: " +
                         "\nEnter 'add' to add items to cart: "+
-                        "\nEnter 'quit' to go back to Main Menu: " +
                         "\nEnter 'view' to view whats in Basket: " +
-                        "\nEnter 'remove' to remove items from Cart: \n");
+                        "\nEnter 'remove' to remove items from Cart: "+
+                        "\nEnter 'quit' to go back to Main Menu: \n");
     }
 }
 
