@@ -78,8 +78,6 @@ public class CustomerOptions {
         //to insert Customer Info
         Customer customer = new Customer();
 
-        System.out.print("Customer ID: ");
-        customer.setCust_id(input.nextInt()); // TODO: VALIDATE THESE FIELDS TO MAKE SURE A INTEGER IS ADDED AND NOT A STRING
         System.out.print("Customer Name: ");
         customer.setCust_name(input.next());
         System.out.print("Customer Surname: ");
@@ -87,26 +85,34 @@ public class CustomerOptions {
         System.out.print("Customer Area: ");
         customer.setCust_area(input.next());
         System.out.print("Customer Cell Number: ");
-        customer.setCust_cell_no(input.nextInt());
-        System.out.println("Enter Customer Balance: ");
-        customer.setCust_balance(input.nextInt());
+        customer.setCust_cell_no(input.next());
+        System.out.print("Enter Customer Balance: ");
+        customer.setCust_balance(input.nextDouble());
         customerUpdate(customer);
     }
 
     public static void customerUpdate(Customer customer) {
-        try {
+        String sql = "select * from customer";
+            try {
+                Statement stat = con.createStatement();
+                ResultSet rs = stat.executeQuery(sql);
+
+                int cust_id = 0;
+                while (rs.next()) {
+                    cust_id = rs.getInt("Customer_ID");
+                }
             String sqls = "INSERT INTO customer"
-                    + "(Customer_ID, Customer_Name, Customer_Surname, Customer_Area, Customer_Cell_No)"
+                    + "(Customer_ID, Customer_Name, Customer_Surname, Customer_Area, Customer_Cell_No, Customer_Balance)"
                     + "VALUES (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement state = con.prepareStatement(sqls);
 
-            state.setInt(1, customer.getCust_id());
+            state.setInt(1, cust_id + 1);
             state.setString(2, customer.getCust_name());
             state.setString(3, customer.getCust_surname());
             state.setString(4, customer.getCust_area());
-            state.setInt(5, customer.getCust_cell_no());
-            state.setInt(6,customer.getCust_balance());
+            state.setString(5, customer.getCust_cell_no());
+            state.setDouble(6,customer.getCust_balance());
 
             int ci = state.executeUpdate();
             if (ci > 0) {
@@ -121,19 +127,12 @@ public class CustomerOptions {
     }
 
     private static class Customer {
-        private int cust_id;
         private String cust_name;
         private String cust_surname;
         private String cust_area;
-        private int cust_cell_no;
-        private int cust_balance;
+        private String cust_cell_no;
+        private double cust_balance;
 
-        public int getCust_id() {
-            return cust_id;
-        }
-        public void setCust_id(int cust_id) {
-            this.cust_id = cust_id;
-        }
 
         public String getCust_name() {
             return cust_name;
@@ -156,17 +155,17 @@ public class CustomerOptions {
             this.cust_area = cust_area;
         }
 
-        public int getCust_cell_no() {
+        public String getCust_cell_no() {
             return cust_cell_no;
         }
-        public void setCust_cell_no(int cust_cell_no) {
+        public void setCust_cell_no(String cust_cell_no) {
             this.cust_cell_no = cust_cell_no;
         }
 
-        public int getCust_balance(){
+        public double getCust_balance(){
             return cust_balance;
         }
-        public void setCust_balance(int cust_balance){
+        public void setCust_balance(double cust_balance){
             this.cust_balance = cust_balance;
         }
     }

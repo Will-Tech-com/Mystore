@@ -54,10 +54,11 @@ public class AddToBasket {
                 states.setString(2, prod_name);
                 states.setDouble(3, prod_price);
 
-                int p = states.executeUpdate();
-                if (p > 0) {
-                    System.out.println("Item added to basket...");
-                }
+                if (num_stock > 0) {
+                    int p = states.executeUpdate();
+                    if (p > 0) {
+                        System.out.println("Item added to basket...");
+                    }
                     String sql = "update product set Quantity_of_Stock = ? where Product_Id = ?";
                     PreparedStatement state = con.prepareStatement(sql);
 
@@ -65,6 +66,9 @@ public class AddToBasket {
                     state.setInt(2, prod_id);
 
                     state.executeUpdate();
+                }else{
+                    System.out.println(prod_name + " is OUT OF STOCK...");
+                }
             }
 
         }

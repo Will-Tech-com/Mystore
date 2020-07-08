@@ -15,8 +15,6 @@ public class RemoveFromBasket {
 
     public static void removeItems() {
         System.out.println("\nChoose Item to remove");
-        PosCart.basketItemsDisplay();
-
         try {
             PreparedStatement ps;
 

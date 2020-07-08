@@ -77,8 +77,7 @@ public static void productOptions(){
     public static void readInProductDetails(Scanner input) {
         //to insert Product information
         Product product = new Product();
-        System.out.print("Product Id: ");
-        product.setProd_id(input.nextInt()); // TODO: VALIDATE THESE FIELDS TO MAKE SURE A INTEGER IS ADDED AND NOT A STRING
+
         System.out.print("Product Name: ");
         product.setProd_name(input.next());
         System.out.print("Product Price: ");
@@ -93,13 +92,21 @@ public static void productOptions(){
 
     public static void productUpdate(Product product) {
         try {
+            String sql2 = "select * from product";
+            Statement state = con.createStatement();
+            ResultSet p2 = state.executeQuery(sql2);
+
+            int prod_id = 0;
+            while (p2.next()) {
+                prod_id = p2.getInt("Product_Id");
+            }
             String sql = "INSERT INTO product"
                     + "(Product_Id, Product_Name, Product_Price, Quantity_of_Stock, Category)"
                     + "VALUES (?, ?, ?, ?, ?)";
 
             PreparedStatement stat = con.prepareStatement(sql);
 
-            stat.setInt(1, product.getProd_id());
+            stat.setInt(1, prod_id + 1);
             stat.setString(2, product.getProd_name());
             stat.setDouble(3, product.getProd_price());
             stat.setInt(4, product.getNum_stock());
@@ -119,18 +126,11 @@ public static void productOptions(){
 
     private static class Product {
 
-        private int prod_id;
         private String prod_name;
         private double prod_price;
         private int num_stock;
         private String category;
 
-        public int getProd_id() {
-            return prod_id;
-        }
-        public void setProd_id(int prod_id) {
-            this.prod_id = prod_id;
-        }
 
         public String getProd_name() {
             return prod_name;
